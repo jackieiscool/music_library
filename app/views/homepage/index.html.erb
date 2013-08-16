@@ -1,0 +1,73 @@
+<header class="cf" ng-controller="NowPlayingCtrl">
+    <img src="assets/scu.png" />
+    <h1>Music Player</h1>
+    <div class="song-playing">
+      <!-- <h2 ng-hide="getAlbum()">Play some of that good soul music from the albums below.</h2> -->
+      <!-- <div ng-show="getAlbum()"><audio-player song="getSong()" album="getAlbum()"></audio-player></div> -->
+    </div>
+  </header>
+
+  <div ng-view></div>
+<div ng-controller="AlbumCtrl">
+	<ul class="search cf">
+	  <li><input ng-model="query" placeholder="Search by artist or album"></li>
+	  <li>
+	    <span>Sort by:</span>
+	    <select ng-model="orderProp">
+	      <option value="artist">Artist</option>
+	      <option value="title">Album</option>
+	    </select></li>
+	</ul>
+	<ul class="album-list cf">
+	  <li ng-repeat="album in albums | filter:query | orderBy:orderProp">
+	    <a href="#/albums/{{album.id}}"><img ng-src="{{album.img_url}}" /></a>
+	    <h2>{{album.artist.name}}</h2>
+	    <h3>{{album.title}}</h3>
+	  </li>
+	</ul>
+</div>
+
+<!-- <img ng-src="{{album.imageUrl}}" />
+<button class="play" ng-click="togglePlaying()">{{playSymbol}}</button>
+<div class="song-details">
+  <h3>{{song.title}}</h3>
+  <h4>{{album.artist}} - {{album.title}}</h4>
+  <span>{{currentTime | formatDuration}}</span>
+  <audio autoplay ng-src="{{song.mp3Url}}" audio-events></audio>
+</div> -->
+
+<!-- <div class="album-details cf">
+  <table>
+    <caption>
+      <h2>{{album.title}}</h2>
+      <h3>{{album.artist}}</h3>
+      <p>{{test}}</p>
+    </caption>
+    <tbody>
+      <tr ng-repeat="song in album.songs" class="album-track" ng-click="play(album, song)" >
+        <td class="track-number">
+          <span class="track">{{song.track}}</span>
+          <span class="play-arrow">▶</span>
+        </td>
+        <td class="track-title">{{song.title}}</td>
+        <!-- <td class="track-time">{{song.duration | formatDuration}}</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="total-time">Total time: {{album.songs | totalDuration | formatDuration}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="album-cover clearfix">
+    <img ng-src="{{album.imageUrl}}" />
+    <div class="gradient"></div>
+  </div>
+</div> -->
+
+  <!-- // <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script> -->
+  <!-- // <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> -->
+  <!-- // <script src="lib/angular/angular.js"></script> -->
+  <!-- // <script src="js/app.js"></script> -->
+  <!-- // <script src="js/services.js"></script> -->
+  <!-- // <script src="js/controllers.js"></script> -->
+  <!-- // <script src="js/filters.js"></script> -->
+  <!-- // <script src="js/directives.js"></script>
